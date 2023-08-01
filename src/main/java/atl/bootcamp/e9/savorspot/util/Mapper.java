@@ -2,6 +2,7 @@ package atl.bootcamp.e9.savorspot.util;
 
 import atl.bootcamp.e9.savorspot.dto.FoodStallDto;
 import atl.bootcamp.e9.savorspot.dto.RegisterFoodStallDto;
+import atl.bootcamp.e9.savorspot.dto.UserFoodStallDto;
 import atl.bootcamp.e9.savorspot.model.FoodStall;
 
 public final class Mapper {
@@ -10,7 +11,7 @@ public final class Mapper {
         throw new UnsupportedOperationException("A static class cannot be instantiated");
     }
 
-    public static FoodStallDto mapToDto(FoodStall foodStall) {
+    public static FoodStallDto mapToFoodStallDto(FoodStall foodStall) {
         return new FoodStallDto(
                 foodStall.getId(),
                 foodStall.getFoodStallName(),
@@ -24,7 +25,7 @@ public final class Mapper {
         );
     }
 
-    public static FoodStall mapToEntity(RegisterFoodStallDto registerFoodStallDto) {
+    public static FoodStall mapToFoodStall(RegisterFoodStallDto registerFoodStallDto) {
         FoodStall foodStall = new FoodStall();
         foodStall.setFullName(registerFoodStallDto.fullName());
         foodStall.setEmail(registerFoodStallDto.email());
@@ -38,6 +39,25 @@ public final class Mapper {
         foodStall.setLatitude(registerFoodStallDto.latitude());
         foodStall.setLongitude(registerFoodStallDto.longitude());
         return foodStall;
+    }
+
+    public static UserFoodStallDto mapToUserFoodStallDto(FoodStall foodStall) {
+        return new UserFoodStallDto(
+                foodStall.getId(),
+                foodStall.getFullName(),
+                foodStall.getEmail(),
+                new FoodStallDto(
+                        foodStall.getId(),
+                        foodStall.getFoodStallName(),
+                        foodStall.getAddress(),
+                        foodStall.getTypeCuisine(),
+                        foodStall.getAttentionSchedules(),
+                        foodStall.getPhone(),
+                        foodStall.getFacadeImageUrl(),
+                        foodStall.getLatitude(),
+                        foodStall.getLongitude()
+                )
+        );
     }
 
 }

@@ -19,6 +19,6 @@ public class ListAllFoodStallServiceImpl implements ListAllFoodStallService {
 
     @Override
     public Page<FoodStallDto> list(Pageable pageable) {
-        return foodStallRepository.findAll(pageable).map(Mapper::mapToDto);
+        return foodStallRepository.findAll(pageable).map(Mapper::mapToFoodStallDto);
     }
 }

@@ -1,17 +1,24 @@
 package atl.bootcamp.e9.savorspot;
 
 import atl.bootcamp.e9.savorspot.dto.RegisterFoodStallDto;
+import atl.bootcamp.e9.savorspot.service.FindUserFoodStallByIdService;
+import atl.bootcamp.e9.savorspot.service.ListAllFoodStallService;
 import atl.bootcamp.e9.savorspot.service.RegisterFoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Pageable;
 
 @SpringBootApplication
 public class SavorSpotApplication implements CommandLineRunner {
 
 	@Autowired
 	private RegisterFoodService registerFoodService;
+	@Autowired
+	private ListAllFoodStallService listAllFoodStallService;
+	@Autowired
+	private FindUserFoodStallByIdService findUserFoodStallByIdService;
 
 
 	public static void main(String[] args) {
@@ -35,5 +42,9 @@ public class SavorSpotApplication implements CommandLineRunner {
 						null
 				)
 		);
+
+		listAllFoodStallService.list(Pageable.ofSize(10)).forEach(System.out::println);
+		var result = findUserFoodStallByIdService.findWith(1L);
+		System.out.println(result);
 	}
 }
