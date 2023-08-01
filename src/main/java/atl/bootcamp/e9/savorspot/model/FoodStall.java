@@ -18,13 +18,13 @@ public class FoodStall extends User{
     @Column(name = "type_cuisine", nullable = false)
     private String typeCuisine;
 
-    @Column(name = "horarios")
+    @Column(name = "attention_schedules")
     private String attentionSchedules;
 
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "facade_image")
+    @Column(name = "facade_image_url")
     private String facadeImageUrl;
 
     @Column(name = "latitude")
