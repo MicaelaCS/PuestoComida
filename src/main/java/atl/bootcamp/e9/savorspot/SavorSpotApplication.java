@@ -2,10 +2,7 @@ package atl.bootcamp.e9.savorspot;
 
 import atl.bootcamp.e9.savorspot.dto.RegisterUserFoodStallDto;
 import atl.bootcamp.e9.savorspot.dto.UserFoodStallDto;
-import atl.bootcamp.e9.savorspot.service.FindUserFoodStallByIdService;
-import atl.bootcamp.e9.savorspot.service.ListAllFoodStallService;
-import atl.bootcamp.e9.savorspot.service.RegisterFoodStallService;
-import atl.bootcamp.e9.savorspot.service.UpdateFoodStallService;
+import atl.bootcamp.e9.savorspot.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +20,8 @@ public class SavorSpotApplication implements CommandLineRunner {
 	private FindUserFoodStallByIdService findUserFoodStallByIdService;
 	@Autowired
 	private UpdateFoodStallService updateFoodStallService;
+	@Autowired
+	private DeleteFoodStallByIdService deleteFoodStallByIdService;
 
 
 	public static void main(String[] args) {
@@ -65,6 +64,8 @@ public class SavorSpotApplication implements CommandLineRunner {
 		));
 		var result2 = findUserFoodStallByIdService.findWith(1L);
 		System.out.println(result2);
+		deleteFoodStallByIdService.deleteWith(1L);
+		findUserFoodStallByIdService.findWith(1L);
 
 	}
 }
