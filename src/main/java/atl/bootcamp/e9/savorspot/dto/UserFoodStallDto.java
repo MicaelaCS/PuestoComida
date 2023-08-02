@@ -4,5 +4,12 @@ public record UserFoodStallDto(
         Long id,
         String fullName,
         String email,
-        FoodStallDto foodStallData
+        String foodStallName,
+        String address,
+        String typeCuisine,
+        String attentionSchedules,
+        String phone,
+        String facadeImageUrl,
+        Double latitude,
+        Double longitude
 ) {}

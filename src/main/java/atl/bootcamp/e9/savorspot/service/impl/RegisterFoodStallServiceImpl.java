@@ -1,13 +1,13 @@
 package atl.bootcamp.e9.savorspot.service.impl;
 
-import atl.bootcamp.e9.savorspot.dto.RegisterFoodStallDto;
+import atl.bootcamp.e9.savorspot.dto.RegisterUserFoodStallDto;
 import atl.bootcamp.e9.savorspot.repository.FoodStallRepository;
-import atl.bootcamp.e9.savorspot.service.RegisterFoodService;
-import atl.bootcamp.e9.savorspot.util.Mapper;
+import atl.bootcamp.e9.savorspot.service.RegisterFoodStallService;
+import atl.bootcamp.e9.savorspot.util.UserMapper;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegisterFoodStallServiceImpl implements RegisterFoodService {
+public class RegisterFoodStallServiceImpl implements RegisterFoodStallService {
 
     private final FoodStallRepository foodStallRepository;
 
@@ -16,7 +16,7 @@ public class RegisterFoodStallServiceImpl implements RegisterFoodService {
     }
 
     @Override
-    public void create(RegisterFoodStallDto registerNewFoodStallDto) {
-        foodStallRepository.save(Mapper.mapToFoodStall(registerNewFoodStallDto));
+    public void create(RegisterUserFoodStallDto registerUserFoodStallDto) {
+        foodStallRepository.save(UserMapper.mapToFoodStall(registerUserFoodStallDto));
     }
 }

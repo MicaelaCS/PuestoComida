@@ -4,7 +4,7 @@ import atl.bootcamp.e9.savorspot.dto.UserFoodStallDto;
 import atl.bootcamp.e9.savorspot.exception.FoodStallNostFoundException;
 import atl.bootcamp.e9.savorspot.repository.FoodStallRepository;
 import atl.bootcamp.e9.savorspot.service.FindUserFoodStallByIdService;
-import atl.bootcamp.e9.savorspot.util.Mapper;
+import atl.bootcamp.e9.savorspot.util.UserMapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +20,7 @@ public class FindUserFoodStallByIdServiceImpl implements FindUserFoodStallByIdSe
     public UserFoodStallDto findWith(Long id) {
         return foodStallRepository
                 .findById(id)
-                .map(Mapper::mapToUserFoodStallDto)
+                .map(UserMapper::mapToUserFoodStallDto)
                 .orElseThrow(() -> new FoodStallNostFoundException("Food stall with id " + id + " not found"));
     }
 }

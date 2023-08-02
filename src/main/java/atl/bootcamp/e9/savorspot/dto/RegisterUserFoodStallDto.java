@@ -1,6 +1,6 @@
 package atl.bootcamp.e9.savorspot.dto;
 
-public record RegisterFoodStallDto(
+public record RegisterUserFoodStallDto(
         String fullName,
         String email,
         String password,
