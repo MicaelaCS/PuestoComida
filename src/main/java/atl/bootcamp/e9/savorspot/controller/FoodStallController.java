@@ -16,6 +16,7 @@ public class FoodStallController {
     private final RegisterFoodStallService registerFoodStallService;
     private final ListAllFoodStallService listAllFoodStallService;
     private final FindUserFoodStallByIdService findUserFoodStallByIdService;
+    private final FindFoodStallByIdService findFoodStallByIdService;
     private final UpdateFoodStallService updateFoodStallService;
     private final DeleteFoodStallByIdService deleteFoodStallByIdService;
 
@@ -23,11 +24,13 @@ public class FoodStallController {
             RegisterFoodStallService registerFoodStallService,
             ListAllFoodStallService listAllFoodStallService,
             FindUserFoodStallByIdService findUserFoodStallByIdService,
+            FindFoodStallByIdService findFoodStallByIdService,
             UpdateFoodStallService updateFoodStallService,
             DeleteFoodStallByIdService deleteFoodStallByIdService) {
         this.registerFoodStallService = registerFoodStallService;
         this.listAllFoodStallService = listAllFoodStallService;
         this.findUserFoodStallByIdService = findUserFoodStallByIdService;
+        this.findFoodStallByIdService = findFoodStallByIdService;
         this.updateFoodStallService = updateFoodStallService;
         this.deleteFoodStallByIdService = deleteFoodStallByIdService;
     }
@@ -38,7 +41,12 @@ public class FoodStallController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable Long id) {
+    public ResponseEntity<?> findFoodStallById(@PathVariable Long id) {
+        return ResponseEntity.ok(findFoodStallByIdService.findWith(id));
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<?> findUserFoodStallById(@PathVariable Long id) {
         return ResponseEntity.ok(findUserFoodStallByIdService.findWith(id));
     }
 
