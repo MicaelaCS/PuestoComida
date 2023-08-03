@@ -10,8 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/stalls")
-public class FoodStallController {
+@RequestMapping("/stalls") // stalls -> puestos
+public class FoodStallController { // FoodStall -> puestoDeComida
 
     private final RegisterFoodStallService registerFoodStallService;
     private final ListAllFoodStallService listAllFoodStallService;
