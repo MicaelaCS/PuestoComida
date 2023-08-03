@@ -16,7 +16,7 @@ public class RegisterFoodStallServiceImpl implements RegisterFoodStallService {
     }
 
     @Override
-    public void create(RegisterUserFoodStallDto registerUserFoodStallDto) {
+    public void register(RegisterUserFoodStallDto registerUserFoodStallDto) {
         foodStallRepository.save(UserMapper.mapToFoodStall(registerUserFoodStallDto));
     }
 }

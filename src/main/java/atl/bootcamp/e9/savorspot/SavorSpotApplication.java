@@ -30,7 +30,7 @@ public class SavorSpotApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		registerFoodService.create(
+		registerFoodService.register(
 				new RegisterUserFoodStallDto(
 						"Alejandro Fernandez",
 						"alejandro@email.com",
@@ -45,27 +45,6 @@ public class SavorSpotApplication implements CommandLineRunner {
 						null
 				)
 		);
-
-		listAllFoodStallService.list(Pageable.ofSize(10)).forEach(System.out::println);
-		var result = findUserFoodStallByIdService.findWith(1L);
-		System.out.println(result);
-		updateFoodStallService.update(new UserFoodStallDto(
-				1L,
-				"Alex Pérez",
-				"alejandro@email.com",
-				"El rincón del sabor",
-				"Calle número 3456",
-				"Comidas Caseras y Ricas",
-				"desde 08:00hs hasta 01:00hs ",
-				"1234345678",
-				null,
-				null,
-				null
-		));
-		var result2 = findUserFoodStallByIdService.findWith(1L);
-		System.out.println(result2);
-		deleteFoodStallByIdService.deleteWith(1L);
-		findUserFoodStallByIdService.findWith(1L);
 
 	}
 }
