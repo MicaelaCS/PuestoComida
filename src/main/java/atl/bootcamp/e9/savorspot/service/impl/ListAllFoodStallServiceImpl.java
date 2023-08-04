@@ -1,6 +1,7 @@
 package atl.bootcamp.e9.savorspot.service.impl;
 
 import atl.bootcamp.e9.savorspot.dto.FoodStallDto;
+import atl.bootcamp.e9.savorspot.model.UserStatus;
 import atl.bootcamp.e9.savorspot.repository.FoodStallRepository;
 import atl.bootcamp.e9.savorspot.service.ListAllFoodStallService;
 import atl.bootcamp.e9.savorspot.util.UserMapper;
@@ -19,6 +20,6 @@ public class ListAllFoodStallServiceImpl implements ListAllFoodStallService {
 
     @Override
     public Page<FoodStallDto> list(Pageable pageable) {
-        return foodStallRepository.findAll(pageable).map(UserMapper::mapToFoodStallDto);
+        return foodStallRepository.findByUserStatusNot(UserStatus.INACTIVE, pageable).map(UserMapper::mapToFoodStallDto);
     }
 }

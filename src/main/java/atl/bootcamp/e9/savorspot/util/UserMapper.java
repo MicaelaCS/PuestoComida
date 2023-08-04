@@ -4,6 +4,7 @@ import atl.bootcamp.e9.savorspot.dto.FoodStallDto;
 import atl.bootcamp.e9.savorspot.dto.RegisterUserFoodStallDto;
 import atl.bootcamp.e9.savorspot.dto.UserFoodStallDto;
 import atl.bootcamp.e9.savorspot.model.FoodStall;
+import atl.bootcamp.e9.savorspot.model.UserStatus;
 
 public final class UserMapper {
 
@@ -25,43 +26,12 @@ public final class UserMapper {
         );
     }
 
-    public static FoodStall mapToFoodStall(RegisterUserFoodStallDto registerUserFoodStallDto) {
-        FoodStall foodStall = new FoodStall();
-        foodStall.setFullName(registerUserFoodStallDto.fullName());
-        foodStall.setEmail(registerUserFoodStallDto.email());
-        foodStall.setPassword(registerUserFoodStallDto.password());
-        foodStall.setFoodStallName(registerUserFoodStallDto.foodStallName());
-        foodStall.setAddress(registerUserFoodStallDto.address());
-        foodStall.setTypeCuisine(registerUserFoodStallDto.typeCuisine());
-        foodStall.setAttentionSchedules(registerUserFoodStallDto.attentionSchedules());
-        foodStall.setPhone(registerUserFoodStallDto.phone());
-        foodStall.setFacadeImageUrl(registerUserFoodStallDto.facadeImageUrl());
-        foodStall.setLatitude(registerUserFoodStallDto.latitude());
-        foodStall.setLongitude(registerUserFoodStallDto.longitude());
-        return foodStall;
-    }
-
-    public static FoodStall mapToFoodStall(UserFoodStallDto userFoodStallDto) {
-        FoodStall foodStall = new FoodStall();
-        foodStall.setId(userFoodStallDto.id());
-        foodStall.setFullName(userFoodStallDto.fullName());
-        foodStall.setEmail(userFoodStallDto.email());
-        foodStall.setFoodStallName(userFoodStallDto.foodStallName());
-        foodStall.setAddress(userFoodStallDto.address());
-        foodStall.setTypeCuisine(userFoodStallDto.typeCuisine());
-        foodStall.setAttentionSchedules(userFoodStallDto.attentionSchedules());
-        foodStall.setPhone(userFoodStallDto.phone());
-        foodStall.setFacadeImageUrl(userFoodStallDto.facadeImageUrl());
-        foodStall.setLatitude(userFoodStallDto.latitude());
-        foodStall.setLongitude(userFoodStallDto.longitude());
-        return foodStall;
-    }
-
     public static UserFoodStallDto mapToUserFoodStallDto(FoodStall foodStall) {
         return new UserFoodStallDto(
                 foodStall.getId(),
                 foodStall.getFullName(),
                 foodStall.getEmail(),
+                foodStall.getUserStatus(),
                 foodStall.getFoodStallName(),
                 foodStall.getAddress(),
                 foodStall.getTypeCuisine(),
@@ -73,7 +43,24 @@ public final class UserMapper {
         );
     }
 
-    public static FoodStall mapToFoodStallForUpdate(UserFoodStallDto userFoodStallDto, FoodStall foodStall) {
+    public static FoodStall mapToFoodStallToRegister(RegisterUserFoodStallDto registerUserFoodStallDto) {
+        FoodStall foodStall = new FoodStall();
+        foodStall.setFullName(registerUserFoodStallDto.fullName());
+        foodStall.setEmail(registerUserFoodStallDto.email());
+        foodStall.setPassword(registerUserFoodStallDto.password());
+        foodStall.setUserStatus(UserStatus.ACTIVE);
+        foodStall.setFoodStallName(registerUserFoodStallDto.foodStallName());
+        foodStall.setAddress(registerUserFoodStallDto.address());
+        foodStall.setTypeCuisine(registerUserFoodStallDto.typeCuisine());
+        foodStall.setAttentionSchedules(registerUserFoodStallDto.attentionSchedules());
+        foodStall.setPhone(registerUserFoodStallDto.phone());
+        foodStall.setFacadeImageUrl(registerUserFoodStallDto.facadeImageUrl());
+        foodStall.setLatitude(registerUserFoodStallDto.latitude());
+        foodStall.setLongitude(registerUserFoodStallDto.longitude());
+        return foodStall;
+    }
+
+    public static FoodStall mapToFoodStallToUpdate(UserFoodStallDto userFoodStallDto, FoodStall foodStall) {
         if(userFoodStallDto.fullName() != null) foodStall.setFullName(userFoodStallDto.fullName());
         if(userFoodStallDto.email() != null) foodStall.setEmail(userFoodStallDto.email());
         if(userFoodStallDto.foodStallName() != null) foodStall.setFoodStallName(userFoodStallDto.foodStallName());
