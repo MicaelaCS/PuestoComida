@@ -10,14 +10,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    protected Long id;
 
     @Column(name = "full_name", nullable = false)
-    private String fullName;
+    protected String fullName;
 
     @Column(name = "email", nullable = false, unique = true)
-    private String email;
+    protected String email;
 
     @Column(name = "password", nullable = false)
-    private String password;
+    protected String password;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    protected UserStatus userStatus;
 }

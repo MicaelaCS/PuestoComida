@@ -1,6 +1,8 @@
 package atl.bootcamp.e9.savorspot.service.impl;
 
 import atl.bootcamp.e9.savorspot.exception.FoodStallNotFoundException;
+import atl.bootcamp.e9.savorspot.model.FoodStall;
+import atl.bootcamp.e9.savorspot.model.UserStatus;
 import atl.bootcamp.e9.savorspot.repository.FoodStallRepository;
 import atl.bootcamp.e9.savorspot.service.DeleteFoodStallByIdService;
 import org.springframework.stereotype.Service;
@@ -17,11 +19,11 @@ public class DeleteFoodStallByIdServiceImpl implements DeleteFoodStallByIdServic
     @Override
     public void deleteWith(Long id) {
 
-        if(!foodStallRepository.existsById(id)) {
-            throw new FoodStallNotFoundException("Food stall with id " + id + " not found");
-        }
-
-        foodStallRepository.deleteById(id);
+        FoodStall foodStallToUpdate = foodStallRepository
+                .findByIdAndUserStatusNot(id, UserStatus.INACTIVE)
+                .orElseThrow(() -> new FoodStallNotFoundException("Food stall with id " + id + " not found"));
+        foodStallToUpdate.setUserStatus(UserStatus.INACTIVE);
+        foodStallRepository.save(foodStallToUpdate);
 
     }
 }
