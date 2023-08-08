@@ -20,6 +20,11 @@ public class User {
 
     @Column(name = "password", nullable = false)
     protected String password;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    protected UserType userType;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     protected UserStatus userStatus;

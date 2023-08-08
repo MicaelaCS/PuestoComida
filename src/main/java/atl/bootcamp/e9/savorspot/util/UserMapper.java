@@ -5,6 +5,7 @@ import atl.bootcamp.e9.savorspot.dto.RegisterUserFoodStallDto;
 import atl.bootcamp.e9.savorspot.dto.UserFoodStallDto;
 import atl.bootcamp.e9.savorspot.model.FoodStall;
 import atl.bootcamp.e9.savorspot.model.UserStatus;
+import atl.bootcamp.e9.savorspot.model.UserType;
 
 public final class UserMapper {
 
@@ -31,6 +32,7 @@ public final class UserMapper {
                 foodStall.getId(),
                 foodStall.getFullName(),
                 foodStall.getEmail(),
+                foodStall.getUserType(),
                 foodStall.getUserStatus(),
                 foodStall.getFoodStallName(),
                 foodStall.getAddress(),
@@ -48,6 +50,7 @@ public final class UserMapper {
         foodStall.setFullName(registerUserFoodStallDto.fullName());
         foodStall.setEmail(registerUserFoodStallDto.email());
         foodStall.setPassword(registerUserFoodStallDto.password());
+        foodStall.setUserType(UserType.FOOD_STALL);
         foodStall.setUserStatus(UserStatus.ACTIVE);
         foodStall.setFoodStallName(registerUserFoodStallDto.foodStallName());
         foodStall.setAddress(registerUserFoodStallDto.address());
