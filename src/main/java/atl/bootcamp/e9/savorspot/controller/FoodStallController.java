@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/stalls") // Probando mi rama Lucho
+@RequestMapping("/stalls")
 public class FoodStallController {
 
     private final RegisterFoodStallService registerFoodStallService;
