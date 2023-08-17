@@ -30,7 +30,7 @@ public class SavorSpotApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		registerFoodService.register(
+		/*registerFoodService.register(
 				new RegisterUserFoodStallDto(
 						"Alejandro Fernandez",
 						"alejandro@email.com",
@@ -44,7 +44,7 @@ public class SavorSpotApplication implements CommandLineRunner {
 						null,
 						null
 				)
-		);
+		);*/
 
 	}
 }

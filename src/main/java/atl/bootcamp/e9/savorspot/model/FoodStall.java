@@ -9,6 +9,8 @@ import lombok.Data;
 @Entity
 @PrimaryKeyJoinColumn(name = "foodStall_id")
 public class FoodStall extends User{
+
+
     @Column(name = "name", nullable = false, unique = true)
     private String foodStallName;
 
