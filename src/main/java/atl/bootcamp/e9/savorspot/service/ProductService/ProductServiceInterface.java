@@ -1,7 +1,6 @@
 package atl.bootcamp.e9.savorspot.service.ProductService;
 
-import atl.bootcamp.e9.savorspot.dto.ProductDTO;
-import atl.bootcamp.e9.savorspot.model.Product;
+import atl.bootcamp.e9.savorspot.dto.FoodDTO;
 
 import org.springframework.stereotype.Repository;
 
@@ -11,16 +10,16 @@ import java.util.List;
 public interface ProductServiceInterface{
 
     //POST in Controller
-    ProductDTO createProduct(ProductDTO productDto);
+    //FoodDTO createProduct(FoodDTO foodDto);
 
     //getALL in Controller
-    List<ProductDTO>getAllProduct();
+    //List<FoodDTO>getAllProduct();
 
     //getById in Controller
-    ProductDTO getProductById(long id);
+    FoodDTO getProductById(long id);
 
     //update in Controller
-    ProductDTO updateProduct(ProductDTO product, long id);
+    FoodDTO updateProduct(FoodDTO product, long id);
 
     //delete in Controller
     void deleteProduct(long id);

@@ -6,8 +6,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="product")
-public class Product {
+@Table(name="foods")
+public class Foods {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Product {
     private String foodDrink;
     private String description;
 
-   /* @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_food_stand")
-    private FoodStall food_stand;*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "foodStall_id")
+    private FoodStall food_stand;
 }

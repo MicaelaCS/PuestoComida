@@ -1,78 +1,92 @@
 package atl.bootcamp.e9.savorspot.service.ProductService;
 
-import atl.bootcamp.e9.savorspot.dto.ProductDTO;
-import atl.bootcamp.e9.savorspot.exception.ProductResourseNotFoundException;
-import atl.bootcamp.e9.savorspot.model.Product;
-import atl.bootcamp.e9.savorspot.repository.ProductRepository;
+import atl.bootcamp.e9.savorspot.dto.FoodDTO;
+import atl.bootcamp.e9.savorspot.model.Foods;
+import atl.bootcamp.e9.savorspot.repository.FoodsRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService implements ProductServiceInterface {
 
     //injection dependency
-    ProductRepository productoRepository;
-    public ProductService(ProductRepository productoRepository) {
+    FoodsRepository productoRepository;
+    public ProductService(FoodsRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
 
     //Post logic
-    public ProductDTO createProduct(ProductDTO productDto) {
+    public FoodDTO createProduct(FoodDTO foodDto) {
 
-       Product product = new Product();
-       product.setName(productDto.getName());
-       product.setPrice(productDto.getPrice());
-       product.setDescription(productDto.getDescription());
-       productoRepository.save(product);
+       Foods foods = new Foods();
+       foods.setName(foodDto.getName());
+       foods.setPrice(foodDto.getPrice());
+       foods.setDescription(foodDto.getDescription());
+       productoRepository.save(foods);
 
-        return productDto;
+        return foodDto;
     }
 
     //getAll Logic
-    public List<ProductDTO>getAllProduct(){
+    public List<FoodDTO>getAllProduct(){
 
-        List<Product> all = productoRepository.findAll();
-        List<ProductDTO> products = new ArrayList<>();
+        List<Foods> all = productoRepository.findAll();
+        List<FoodDTO> products = new ArrayList<>();
 
-        for (Product product : all){
-            ProductDTO productDto = new ProductDTO();
-            productDto.setName(product.getName());
-            productDto.setPrice(product.getPrice());
-            productDto.setDescription(product.getDescription());
-            products.add(productDto);
+        for (Foods foods : all){
+            FoodDTO foodDto = new FoodDTO();
+            foodDto.setName(foods.getName());
+            foodDto.setPrice(foods.getPrice());
+            foodDto.setDescription(foods.getDescription());
+            products.add(foodDto);
         }
         return products;
     }
-
     //getProductById Logic
-    public ProductDTO getProductById(long id){
+    public FoodDTO getProductById(long id){
         //return productoRepository.findById(id).orElseThrow();
 
-        Product product = productoRepository.findById(id).orElseThrow();
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setName(product.getName());
-        productDTO.setPrice(product.getPrice());
-        productDTO.setDescription(product.getDescription());
-        return productDTO;
+        Foods foods = productoRepository.findById(id).orElseThrow();
+        FoodDTO foodDTO = new FoodDTO();
+        foodDTO.setName(foods.getName());
+        foodDTO.setPrice(foods.getPrice());
+        foodDTO.setDescription(foods.getDescription());
+        return foodDTO;
     }
 
     //updateProduct Logic
     @Override
-    public ProductDTO updateProduct(ProductDTO productDTO, long id) {
-        Product existingProduct = productoRepository.findById(id).orElseThrow();
-        //updating existing Product
-        existingProduct.setName(productDTO.getName());
-        existingProduct.setPrice(productDTO.getPrice());
-        existingProduct.setDescription(productDTO.getDescription());
-        //saving existing Product
+    public FoodDTO updateProduct(FoodDTO foodDTO, long id) {
 
-        productoRepository.save(existingProduct);
-        return productDTO;
+        Foods existingFoods = productoRepository.findById(id).orElseThrow();
+        //updating existing Foods
+        existingFoods.setName(foodDTO.getName());
+        existingFoods.setPrice(foodDTO.getPrice());
+        existingFoods.setDescription(foodDTO.getDescription());
+        //saving existing Foods
+
+        productoRepository.save(existingFoods);
+        return foodDTO;
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //deleting exisiting product
     @Override
