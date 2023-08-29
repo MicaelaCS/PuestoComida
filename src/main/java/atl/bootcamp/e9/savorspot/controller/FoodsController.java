@@ -18,11 +18,11 @@ public class FoodsController {
 
 
     //injection service dependency
-    private CreateFoodService createFoodService;
-    private GetAllFoodService getAllFoodService;
-    private GetFoodByIdServiceImpl getFoodByIdService;
-    private UpdateFoodServiceImpl updateFoodService;
-    private DeleteFoodServiceImpl deleteFoodService;
+    private final CreateFoodService createFoodService;
+    private final GetAllFoodService getAllFoodService;
+    private final GetFoodByIdServiceImpl getFoodByIdService;
+    private final UpdateFoodServiceImpl updateFoodService;
+    private final DeleteFoodServiceImpl deleteFoodService;
     //  -----------------------// -------------------------//
 
     public FoodsController(CreateFoodService createFoodService,
